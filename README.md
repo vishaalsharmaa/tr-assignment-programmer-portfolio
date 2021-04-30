@@ -1,6 +1,6 @@
 # Portfolio
 
-This project consists is my portfolio. It includes my work experience and some personal information.
+This project consists of a Programmers portfolio. It includes an individual's work experience and a generic personal information.
 
 It uses following tools and concepts:
 
@@ -12,7 +12,7 @@ It uses following tools and concepts:
 
 ## How To Run App
 
-1. Clone/download project - `https://github.com/noobgod-115/portfolio.git`
+1. Clone/download project - `https://github.com/Neptune-Ubicom/tr-assignment.git`
 
 2. Go to downloaded folder & run `ng serve` for a dev server.
 
