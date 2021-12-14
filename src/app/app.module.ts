@@ -15,6 +15,10 @@ import { IconStackComponent } from './components/work/icon-stack/icon-stack.comp
 import { OtherStuffComponent } from './components/work/other-stuff/other-stuff.component';
 import { WorkTimelineComponent } from './components/work/work-timeline/work-timeline.component';
 import { ExperienceComponent } from './components/work/experience/experience.component';
+import { ResumeBuilderComponent } from './builder/resume-builder/resume-builder.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UiSwitchModule } from 'ngx-toggle-switch';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -29,8 +33,9 @@ import { ExperienceComponent } from './components/work/experience/experience.com
     OtherStuffComponent,
     WorkTimelineComponent,
     ExperienceComponent,
+    ResumeBuilderComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, FontAwesomeModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, FontAwesomeModule, ReactiveFormsModule, UiSwitchModule, OrderModule],
   providers: [],
   bootstrap: [AppComponent],
 })

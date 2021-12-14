@@ -1,0 +1,212 @@
+<div class="container">
+  <div class="p-5">
+    <div class="card">
+      <div class="card-header">Portfolio Builder</div>
+      <div class="card-body">
+        <form [formGroup]="portFolioBuilderForm">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="font-weight-bold" for="first_name">First Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-md" id="first_name" formControlName="firstName"
+                [ngClass]="{'is-invalid': (portFolioBuilderForm.get('firstName').touched || portFolioBuilderForm.get('firstName').dirty) && !portFolioBuilderForm.get('firstName').valid }" />
+
+              <span class="invalid-feedback">
+                <span *ngIf="portFolioBuilderForm.get('firstName').errors?.required">
+                  Please enter your first name.
+                </span>
+              </span>
+
+            </div>
+
+            <div class="form-group col-md-6">
+              <label class="font-weight-bold" for="last_name">Last Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-md" id="last_name" formControlName="lastName"
+                [ngClass]="{'is-invalid': (portFolioBuilderForm.get('lastName').touched || portFolioBuilderForm.get('lastName').dirty) && !portFolioBuilderForm.get('lastName').valid }" />
+
+              <span class="invalid-feedback">
+                <span *ngIf="portFolioBuilderForm.get('lastName').errors?.required">
+                  Please enter your last name.
+                </span>
+              </span>
+
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label class="font-weight-bold" for="contact_phone">Contact Number <span
+                  class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-md" id="contact_phone" formControlName="phone"
+                [ngClass]="{'is-invalid': (portFolioBuilderForm.get('phone').touched || portFolioBuilderForm.get('phone').dirty) && !portFolioBuilderForm.get('phone').valid }" />
+
+              <span class="invalid-feedback">
+                <span *ngIf="portFolioBuilderForm.get('phone').errors?.required">
+                  Please enter your contact number.
+                </span>
+              </span>
+
+            </div>
+
+            <div class="form-group col-md-4">
+              <label class="font-weight-bold" for="contact_email">Email <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-md" id="contact_email" formControlName="email"
+                [ngClass]="{'is-invalid': (portFolioBuilderForm.get('email').touched || portFolioBuilderForm.get('email').dirty) && !portFolioBuilderForm.get('email').valid }" />
+
+              <span class="invalid-feedback">
+                <span *ngIf="portFolioBuilderForm.get('email').errors?.required">
+                  Please enter your email.
+                </span>
+              </span>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label class="font-weight-bold" for="contact_linkedin">LinkedIn Profile</label>
+              <input type="text" class="form-control form-control-md" id="contact_linkedin"
+                formControlName="linkedInURL" />
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="form-check-label" for="is_Fresher">Are you a fresher?
+                <span class="text-danger">*</span>
+              </label>
+              <ui-switch class="ml-3 pt-1" formControlName="isFresher" size="small" id="is_Fresher">
+              </ui-switch>
+            </div>
+
+
+            <ng-container *ngIf="!portFolioBuilderForm.get('isFresher').value">
+
+              <div class="form-group col-md-12">
+                <div class="d-flex flex-row">
+                  <div class="justify-content-start">
+                    <h5>Experience</h5>
+                  </div>
+
+                  <div class="ml-auto">
+                    <button (click)="addExperience()" class="btn btn-primary">
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <ng-container formArrayName="experienceBlocks"
+                *ngFor="let experience of experienceBlocks.controls;let i = index">
+
+                <ng-container [formGroupName]="i">
+
+                  <div class="form-group col-md-4">
+                    <label class="font-weight-bold" for="exp_title">Title</label>
+                    <input formControlName="title" type="text" class="form-control form-control-md"
+                      id="{{ 'exp_title' + i }}" />
+                  </div>
+
+                  <div class="form-group col-md-4">
+                    <label class="font-weight-bold" for="exp_company">Company</label>
+                    <input formControlName="company" type="text" class="form-control form-control-md"
+                      id="{{ 'exp_company' + i }}" />
+                  </div>
+
+                  <div class="form-group col-md-4">
+                    <label class="font-weight-bold" for="location">Location</label>
+                    <input formControlName="location" type="text" class="form-control form-control-md"
+                      id="{{ 'exp_location' + i }}" />
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label class="font-weight-bold" for="exp_start_date">Start Date</label>
+                    <input formControlName="startDate" type="date" class="form-control form-control-md"
+                      id="{{ 'exp_start_date' + i }}" />
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label class="font-weight-bold" for="exp_end_date">End Date</label>
+                    <input formControlName="endDate" type="date" class="form-control form-control-md"
+                      id="{{ 'exp_end_date' + i }}" />
+                  </div>
+
+                  <div class="form-group col-md-12">
+                    <label class="font-weight-bold" for="exp_description">Description</label>
+                    <textarea formControlName="description" class="form-control form-control-md"
+                      id="{{ 'exp_description' + i }}"></textarea>
+                  </div>
+                </ng-container>
+
+              </ng-container>
+
+            </ng-container>
+
+
+            <!-- Education Details  -->
+
+            <div class="form-group col-md-12">
+              <div class="d-flex flex-row">
+                <div class="justify-content-start">
+                  <h5>Education Qualification</h5>
+                  <small class="font-italic">
+                    <span class="text-danger">*</span>
+                    Note: At least one Education detail is required.</small>
+                </div>
+
+                <div class="ml-auto">
+                  <button (click)="addEducation()" class="btn btn-primary">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <ng-container formArrayName="educationBlocks"
+              *ngFor="let experience of educationBlocks.controls; let i = index">
+
+              <ng-container [formGroupName]="i">
+                <div class="form-group col-md-3">
+                  <label class="font-weight-bold" for="edu_degree_name">Degree <span
+                      class="text-danger">*</span></label>
+
+                  <select formControlName="degree" class="form-control form-control-md"
+                    id="{{ 'edu_degree_name' + i }}">
+                    <option selected>--Select--</option>
+                    <option value="Post Graduate">Post Graduate</option>
+                    <option value="Graduate">Graduate</option>
+                    <option value="Higher Senior Secondary">Higher Senior Secondary</option>
+                    <option value="Senior Secondary">Senior Secondary</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label class="font-weight-bold" for="edu_institution_name">Institution Name <span
+                      class="text-danger">*</span></label>
+                  <input formControlName="institutionName" type="text" class="form-control form-control-md"
+                    id="{{ 'edu_institution_name' + i }}" />
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label class="font-weight-bold" for="edu_passing_year">Passing Year <span
+                      class="text-danger">*</span></label>
+                  <input formControlName="passingYear" type="text" class="form-control form-control-md"
+                    id="{{ 'edu_passing_year' + i }}" />
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label class="font-weight-bold" for="edu_percentage">Percentage <span
+                      class="text-danger">*</span></label>
+                  <input formControlName="percentage" type="text" class="form-control form-control-md"
+                    id="{{ 'edu_percentage' + i }}" />
+                </div>
+              </ng-container>
+            </ng-container>
+
+            <p>Form Status: {{ portFolioBuilderForm.valid ? 'Valid' : 'Invalid' }}</p>
+
+            <div class="ml-auto">
+              <button [disabled]="!portFolioBuilderForm.valid" (click)="save()" type="submit" class="btn btn-primary">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

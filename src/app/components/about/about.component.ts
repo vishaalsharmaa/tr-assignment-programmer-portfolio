@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+  public userData:any;
   constructor() { }
 
   ngOnInit(): void {
+    this.parseData();
+  }
+
+  parseData() {
+    this.userData = JSON.parse(localStorage.getItem('userPortfolioData'));
+    console.log(this.userData);
   }
 
 }

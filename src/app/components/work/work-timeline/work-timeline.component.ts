@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkTimelineComponent implements OnInit {
 
+  public userData:any;
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.userData = JSON.parse(localStorage.getItem('userPortfolioData'));
   }
 
 }
